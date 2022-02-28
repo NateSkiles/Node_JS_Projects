@@ -13,7 +13,7 @@ function getPath() {
 // console.log('directory-name 👉️', __dirname, `file-name 👉 ${__filename}`);
 
 // Read File
-export default function getHTMLFile() {
+export default function getHtmlTemplate() {
     let filePath = getPath();
     let source = fs.readFileSync(filePath, 'utf-8').toString();
     let template = handlebars.compile(source);

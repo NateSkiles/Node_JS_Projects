@@ -1,15 +1,13 @@
-import getHTMLFile from './body.js'
-import { send } from './send.js'
-import { RECIPIENT } from './send.js';
-import { EMAIL } from './send.js'
+import getHtmlTemplate from './getTemplate.js'
+import { send, RECIPIENT, EMAIL } from './send.js';
 
-
+// Get HTML Message from template.html
+const body = getHtmlTemplate();
 // Message to be sent via transporter
-const body = getHTMLFile();
 const message = {
     from: EMAIL,
     to: RECIPIENT,
-    subject: 'Sending this email via Node 👋🏻 V',
+    subject: 'Sending this email via Node 👋🏻 FINAL',
     html: body(),
     attachments: [{
         fileName: 'linkedin2x.png',
@@ -28,6 +26,8 @@ const message = {
     }]
 }
 
-console.log(message)
-
-send(message)
+send(message).then(
+    console.log(
+        `To: ${message.to} \nFrom: ${message.from}\nSubject: ${message.subject}`
+    )
+)
